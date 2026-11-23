@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Journal de quêtes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="decor.js" defer></script>
+</head>
+<body>
+  <canvas id="paysage" aria-hidden="true"></canvas>
+  <main class="todo-app">
+    <header>
+      <h1>Journal de quêtes</h1>
+    </header>
+    <section>
+      <label for="taskInput">Nouvelle quête</label>
+      <form class="todo-input" id="taskForm">
+        <input id="taskInput" type="text" placeholder="Ex. Lire un chapitre" required>
+        <button id="addTaskBtn" type="submit">Ajouter</button>
+      </form>
+      <h2>Mes quêtes</h2>
+      <ul id="taskList"></ul>
+      <p id="storageMessage" role="status"></p>
+    </section>
+  </main>
+</body>
+</html>

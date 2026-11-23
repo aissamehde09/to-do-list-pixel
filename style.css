@@ -1,0 +1,79 @@
+/* Ces trois couleurs définissent la palette de la console. */
+:root {
+  --encre: #172421;
+  --ecran: #bce58d;
+  --bouton: #ffc36d;
+}
+
+* { box-sizing: border-box; }
+
+/* Le ciel et le paysage forment deux plans derrière la console. */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 24px clamp(110px, 18vh, 170px);
+  isolation: isolate;
+  background: linear-gradient(#152537, #30565a 72%, #67816a);
+  font-family: "Courier Prime", "Courier New", monospace;
+  color: var(--encre);
+}
+
+#paysage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+/* La bordure épaisse et l'ombre sans flou donnent du relief à la console. */
+.todo-app {
+  width: min(100%, 38rem);
+  padding: clamp(16px, 4vw, 32px);
+  background: #d9d7c4;
+  border: 4px solid #0e1714;
+  border-radius: 12px 12px 40px 12px;
+  box-shadow: 7px 7px #0e1714;
+}
+
+header {
+  background: var(--ecran);
+  border: 6px solid var(--encre);
+  padding: 24px 16px;
+  box-shadow: inset 3px 3px #86ad70;
+}
+h1 { margin: 0; font-size: clamp(1.6rem, 5vw, 3rem); }
+section { margin-top: 24px; }
+label, h2 { font-size: 1rem; font-weight: bold; }
+.todo-input { display: flex; gap: 12px; margin: 8px 0 28px; }
+input, button { border: 2px solid var(--encre); padding: 12px; font: inherit; }
+input { flex: 1; min-width: 0; background: #fffdf3; }
+button {
+  background: var(--bouton);
+  color: var(--encre);
+  font-weight: bold;
+  box-shadow: 3px 3px var(--encre);
+  cursor: pointer;
+}
+
+/* Au clic, le bouton descend jusqu'à son ombre. */
+button:active { transform: translate(3px, 3px); box-shadow: none; }
+:focus-visible { outline: 3px solid #165bb3; outline-offset: 3px; }
+#taskList { padding: 12px 0; margin: 0; border-top: 2px dashed #526154; list-style: none; }
+#taskList:empty::before { content: "Aucune quête en cours."; }
+.quete { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 0; }
+.quete label { flex: 1; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.quete input { flex: none; width: 18px; height: 18px; accent-color: var(--encre); }
+.quete span { overflow-wrap: anywhere; }
+.quete input:checked + span { text-decoration: line-through; }
+.quete button { padding: 6px 10px; background: #fffdf3; }
+#storageMessage:empty { margin: 0; }
+
+/* Sur téléphone, le bouton passe sous le champ de saisie. */
+@media (max-width: 420px) {
+  .todo-input { flex-direction: column; }
+}
